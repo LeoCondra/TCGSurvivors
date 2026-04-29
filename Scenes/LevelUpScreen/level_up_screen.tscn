@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dhyclyndnempu"]
+
+[ext_resource type="Script" uid="uid://d38tho5wo2a2o" path="res://Scenes/LevelUpScreen/level_up_screen.gd" id="1_m6vqv"]
+
+[node name="LevelUpScreen" type="CanvasLayer" unique_id=1735919301]
+process_mode = 3
+script = ExtResource("1_m6vqv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=295025504]
+custom_minimum_size = Vector2(2200, 1000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -382.0
+offset_top = -100.0
+offset_right = 1818.0
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1348572314]
+offset_left = 567.0
+offset_top = 104.0
+offset_right = 639.0
+offset_bottom = 127.0
+text = "LEVEL UP"
+
+[node name="Opt1" type="Button" parent="." unique_id=617869569]
+offset_left = 598.0
+offset_top = 166.0
+offset_right = 606.0
+offset_bottom = 174.0
+
+[node name="Opt2" type="Button" parent="." unique_id=490610415]
+offset_left = 594.0
+offset_top = 282.0
+offset_right = 602.0
+offset_bottom = 290.0
+
+[node name="Opt3" type="Button" parent="." unique_id=821403015]
+offset_left = 591.0
+offset_top = 396.0
+offset_right = 599.0
+offset_bottom = 404.0

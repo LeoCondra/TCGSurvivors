@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b12afpb5imwwo"]
+
+[ext_resource type="Script" uid="uid://djt8k05r70xlj" path="res://Scenes/Player/Weapons/warrior.gd" id="1_mhc38"]
+
+[node name="Warrior" type="Node2D" unique_id=1170029858]
+script = ExtResource("1_mhc38")

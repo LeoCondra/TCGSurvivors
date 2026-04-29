@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cswrf6jbaw2c4"]
+
+[ext_resource type="Script" uid="uid://kqdyjm70j22v" path="res://Scenes/MainMenu/main_menu.gd" id="1_uqdog"]
+
+[node name="MainMenu" type="Control" unique_id=431971574]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 691.0
+offset_top = 54.0
+offset_right = 731.0
+offset_bottom = 94.0
+script = ExtResource("1_uqdog")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1800783955]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -703.0
+offset_top = -85.0
+offset_right = -623.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(10, 10)
+color = Color(0.13319641, 0.13319641, 0.13319638, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1898255595]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -365.0
+offset_top = 37.000008
+offset_right = -259.0
+offset_bottom = 60.000008
+grow_horizontal = 2
+scale = Vector2(5, 5)
+text = "TSG Survivors"
+
+[node name="Button" type="Button" parent="." unique_id=790583993]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = 236.0
+offset_right = -137.0
+offset_bottom = 267.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+text = "Jogar"

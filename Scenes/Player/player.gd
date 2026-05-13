@@ -43,7 +43,7 @@ func _ready():
 	var hitbox = Area2D.new()
 	var hitbox_col = CollisionShape2D.new()
 	var hitbox_shape = CircleShape2D.new()
-	hitbox_shape.radius = 18.0
+	hitbox_shape.radius = 20.1
 	hitbox_col.shape = hitbox_shape
 	hitbox.add_child(hitbox_col)
 	hitbox.body_entered.connect(_on_hit)

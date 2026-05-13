@@ -9,13 +9,17 @@ var player: Node = null
 
 func _ready():
 	collision_layer = 4
-	collision_mask = 0
+	collision_mask = 1
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	wall_min_slide_angle = 0.0
 
 func _process(delta):
 	if player == null:
 		return
 	var direction = (player.global_position - global_position).normalized()
 	velocity = direction * SPEED
+	
+	# O move_and_slide() usará as novas configurações do _ready() para deslizar perfeitamente
 	move_and_slide()
 
 func _draw():

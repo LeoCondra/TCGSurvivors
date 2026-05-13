@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://d0pa6vggoafyc"]
 
 [ext_resource type="Script" uid="uid://3euq85kskjll" path="res://Scenes/XPOrb/xp_orb.gd" id="1_4esmx"]
+[ext_resource type="Texture2D" uid="uid://b4rtt1wl5m0jc" path="res://Sprites/Pacote-TCG.png" id="2_dl50a"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fb8i0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dl50a"]
+size = Vector2(20, 29)
 
 [node name="XPOrb" type="Area2D" unique_id=897184620]
 script = ExtResource("1_4esmx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1591562596]
-shape = SubResource("CircleShape2D_fb8i0")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1796499795]
+texture = ExtResource("2_dl50a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=767396183]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_dl50a")

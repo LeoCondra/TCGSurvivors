@@ -3,7 +3,7 @@ extends Node2D
 const ENEMY_SCENE = preload("res://Scenes/Enemy/enemy.tscn")
 const PLAYER_SCENE = preload("res://Scenes/Player/player.tscn")
 const WORLD_SIZE = 10000.0
-const SPAWN_DISTANCE = 600.0
+const SPAWN_DISTANCE = 600
 
 var player: Node = null
 var spawn_timer := 0.0
@@ -12,7 +12,7 @@ var time_elapsed := 0.0
 
 func _ready():
 	player = PLAYER_SCENE.instantiate()
-	player.global_position = Vector2(WORLD_SIZE / 2, WORLD_SIZE / 2)
+	player.global_position = Vector2(0, 0)
 	add_child(player)
 	RenderingServer.set_default_clear_color(Color(0.15, 0.15, 0.15))
 

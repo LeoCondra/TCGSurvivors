@@ -17,7 +17,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body is Enemy:
-		body.die()
+		body.take_damage(1)
 		queue_free()
 
 func _draw():

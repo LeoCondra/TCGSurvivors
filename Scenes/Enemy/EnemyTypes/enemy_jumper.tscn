@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://di5e4g2mb57ni"]
+
+[ext_resource type="Script" uid="uid://j6063vgv3vam" path="res://Scenes/Enemy/EnemyTypes/enemy_jumper.gd" id="1_8ntcq"]
+
+[node name="EnemyJumper" type="CharacterBody2D" unique_id=698030643]
+script = ExtResource("1_8ntcq")

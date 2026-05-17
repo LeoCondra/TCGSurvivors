@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://lk4mj1owcpti"]
+
+[ext_resource type="Script" uid="uid://c7vjlwq2ueau6" path="res://Scenes/Enemy/EnemyTypes/enemy_brute.gd" id="1_pn118"]
+
+[node name="EnemyBrute" type="CharacterBody2D" unique_id=1340064338]
+script = ExtResource("1_pn118")

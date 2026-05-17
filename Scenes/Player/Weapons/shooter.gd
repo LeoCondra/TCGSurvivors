@@ -2,7 +2,7 @@ extends Node2D
 
 const BULLET_SCENE = preload("res://Scenes/Bullet/bullet.tscn")
 
-var fire_rate := 0.25
+var fire_rate := 0.8  # Nerfado até a morte
 var bullet_scale := 1.0
 var fire_timer := 0.0
 var player: Node = null

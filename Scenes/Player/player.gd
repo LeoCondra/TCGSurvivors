@@ -9,7 +9,7 @@ var hp := 5
 var max_hp := 5
 var invincible := false
 var invincible_timer := 0.0
-const INVINCIBLE_DURATION = 1.0  # segundos de invencibilidade após tomar dano
+const INVINCIBLE_DURATION = 1.0
 
 var xp := 0
 var level := 1
@@ -39,7 +39,6 @@ func _ready():
 	hud = hud_scene.instantiate()
 	add_child(hud)
 
-	# detecta inimigos tocando no player
 	var hitbox = Area2D.new()
 	var hitbox_col = CollisionShape2D.new()
 	var hitbox_shape = CircleShape2D.new()
@@ -63,14 +62,11 @@ func _load_weapon():
 
 func _draw():
 	draw_circle(Vector2.ZERO, 20.0, Color(0.3, 0.6, 1.0))
-	# barra de HP embaixo do player
 	var bar_width := 40.0
 	var bar_height := 5.0
 	var bar_x := -bar_width / 2
 	var bar_y := 28.0
-	# fundo vermelho
 	draw_rect(Rect2(bar_x, bar_y, bar_width, bar_height), Color(0.6, 0.1, 0.1))
-	# frente verde proporcional ao HP
 	var hp_ratio := float(hp) / float(max_hp)
 	draw_rect(Rect2(bar_x, bar_y, bar_width * hp_ratio, bar_height), Color(0.2, 0.9, 0.2))
 
@@ -81,8 +77,12 @@ func _process(delta):
 
 	if invincible:
 		invincible_timer -= delta
+		# pisca entre branco e normal
+		var flash = sin(invincible_timer * 30.0) > 0.0
+		modulate = Color(10, 10, 10, 1) if flash else Color(1, 1, 1, 1)
 		if invincible_timer <= 0.0:
 			invincible = false
+			modulate = Color(1, 1, 1, 1)
 
 	queue_redraw()
 	hud.update(hp, xp, xp_to_next_level, level, get_parent().time_elapsed if get_parent().has_method("_spawn_enemy") else 0.0)
@@ -92,11 +92,17 @@ func _on_hit(body):
 		hp -= 1
 		invincible = true
 		invincible_timer = INVINCIBLE_DURATION
+		queue_redraw()
 		if hp <= 0:
 			_die()
 
+
+
 func _die():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu/main_menu.tscn")
+
+func _level_up_from_special():
+	level_up_screen.show_options(GameData.player_class)
 
 func collect_xp(amount: int):
 	xp += amount

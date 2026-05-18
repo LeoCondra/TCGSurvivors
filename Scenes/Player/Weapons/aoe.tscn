@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://txv7j5i5b88m"]
+
+[ext_resource type="Script" uid="uid://cahy5thaviy26" path="res://Scenes/Player/Weapons/aoe.gd" id="1_rhqbf"]
+
+[node name="Aoe" type="Node2D" unique_id=1563893055]
+script = ExtResource("1_rhqbf")

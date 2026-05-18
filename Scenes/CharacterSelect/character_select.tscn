@@ -67,3 +67,37 @@ grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(2, 2)
 text = "Guerreiro"
+
+[node name="AOEBtn" type="Button" parent="." unique_id=397719147]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -505.0
+offset_top = 342.0
+offset_right = -421.0
+offset_bottom = 373.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(2, 2)
+text = "AOE"
+
+[node name="BoomerangBtn" type="Button" parent="." unique_id=1037857123]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = 335.0
+offset_right = 81.0
+offset_bottom = 366.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(2, 2)
+text = "Bumerangue"

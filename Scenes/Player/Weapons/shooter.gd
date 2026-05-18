@@ -2,11 +2,11 @@ extends Node2D
 
 const BULLET_SCENE = preload("res://Scenes/Bullet/bullet.tscn")
 
-var fire_rate := 0.8  # Nerfado até a morte
+var fire_rate := 0.8
 var bullet_scale := 1.0
 var fire_timer := 0.0
+var multi_shot := false
 var player: Node = null
-
 
 func _process(delta):
 	fire_timer -= delta
@@ -15,14 +15,26 @@ func _process(delta):
 		_shoot()
 
 func _shoot():
-	var bullet = BULLET_SCENE.instantiate()
-	bullet.global_position = player.global_position
-	bullet.direction = (player.get_global_mouse_position() - player.global_position).normalized()
-	bullet.scale = Vector2(bullet_scale, bullet_scale)
-	get_tree().current_scene.add_child(bullet)
+	if multi_shot:
+		for angle_offset in [-15.0, 0.0, 15.0]:
+			var b = BULLET_SCENE.instantiate()
+			b.global_position = player.global_position
+			var base_dir = (player.get_global_mouse_position() - player.global_position).normalized()
+			b.direction = base_dir.rotated(deg_to_rad(angle_offset))
+			b.scale = Vector2(bullet_scale, bullet_scale)
+			get_tree().current_scene.add_child(b)
+	else:
+		var bullet = BULLET_SCENE.instantiate()
+		bullet.global_position = player.global_position
+		bullet.direction = (player.get_global_mouse_position() - player.global_position).normalized()
+		bullet.scale = Vector2(bullet_scale, bullet_scale)
+		get_tree().current_scene.add_child(bullet)
+
+func enable_multi_shot():
+	multi_shot = true
 
 func increase_fire_rate():
-	fire_rate = max(0.05, fire_rate * 0.75)
+	fire_rate = max(fire_rate * 0.75, 0.2)
 
 func increase_bullet_size():
-	bullet_scale += 0.5
+	bullet_scale = min(bullet_scale + 0.75, 4.0)

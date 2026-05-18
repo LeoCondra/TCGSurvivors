@@ -14,7 +14,12 @@ var radius := 20.0
 var flash_timer := 0.0
 const FLASH_DURATION = 0.1
 
+var knockback_velocity := Vector2.ZERO
+const KNOCKBACK_FORCE = 300.0
+const KNOCKBACK_DECAY = 800.0
+
 func _ready():
+	add_to_group("enemies")
 	collision_layer = 4
 	collision_mask = 1
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -40,26 +45,39 @@ func _process(delta):
 	_behavior(delta)
 
 func _behavior(delta):
-	var direction = (player.global_position - global_position).normalized()
-	velocity = direction * speed
+	if knockback_velocity.length() > 0:
+		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, KNOCKBACK_DECAY * delta)
+		velocity = knockback_velocity
+	else:
+		var direction = (player.global_position - global_position).normalized()
+		velocity = direction * speed
 	move_and_slide()
 
-func take_damage(amount: int):
+func take_damage(amount: int, knockback_dir: Vector2 = Vector2.ZERO):
 	hp -= amount
 	_flash()
+	if knockback_dir != Vector2.ZERO:
+		knockback_velocity = knockback_dir * KNOCKBACK_FORCE
 	if hp <= 0:
 		die()
 
 func _flash():
-	modulate = Color(10, 10, 10, 1)  # branco intenso
+	modulate = Color(10, 10, 10, 1)
 	flash_timer = FLASH_DURATION
+
+func apply_knockback(from_position: Vector2):
+	var dir = (global_position - from_position).normalized()
+	knockback_velocity = dir * KNOCKBACK_FORCE
 
 func die():
 	var orb = XP_SCENE.instantiate()
 	orb.global_position = global_position
 	orb.xp_value = xp_value
+	var players = get_tree().get_nodes_in_group("players")
+	if not players.is_empty():
+		orb.pull_radius = players[0].xp_pull_radius
 	get_parent().add_child(orb)
-	queue_free()
+	call_deferred("queue_free")
 
 func _draw():
 	draw_circle(Vector2.ZERO, radius, color)

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dpcqhhonlgcqi"]
+
+[ext_resource type="Script" uid="uid://ur82sbktuaj3" path="res://Scenes/Player/Weapons/boomerang.gd" id="1_3qscm"]
+
+[node name="Boomerang" type="Area2D" unique_id=793013089]
+script = ExtResource("1_3qscm")

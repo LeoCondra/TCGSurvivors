@@ -39,34 +39,28 @@ func _process(delta):
 
 func _decide_spawn():
 	normal_spawn_counter += 1
-
 	if normal_spawn_counter >= 5:
 		normal_spawn_counter = 0
 		var substitute = _roll_substitute()
 		if substitute != null:
 			_spawn_enemy(substitute)
 			return
-
 	_spawn_enemy(ENEMY_NORMAL)
 
 func _roll_substitute():
 	var candidates = []
-
 	if time_elapsed >= 30.0:
 		candidates.append({"scene": ENEMY_RUNNER, "chance": 0.25})
 	if time_elapsed >= 60.0:
 		candidates.append({"scene": ENEMY_BRUTE, "chance": 0.15})
 	if time_elapsed >= 120.0:
 		candidates.append({"scene": ENEMY_JUMPER, "chance": 0.20})
-
 	if candidates.is_empty():
 		return null
-
 	candidates.shuffle()
 	for c in candidates:
 		if randf() <= c["chance"]:
 			return c["scene"]
-
 	return null
 
 func _spawn_enemy(scene):

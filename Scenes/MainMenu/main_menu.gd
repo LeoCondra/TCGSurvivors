@@ -1,7 +1,8 @@
 extends Control
 
+
 func _ready():   
-	var btn = get_node("Button")
+	var btn = get_node("PlayButton")
 	btn.pressed.connect(_on_start_pressed)
 
 func _on_start_pressed():

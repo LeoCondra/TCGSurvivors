@@ -1,49 +1,51 @@
 [gd_scene format=3 uid="uid://cswrf6jbaw2c4"]
 
 [ext_resource type="Script" uid="uid://kqdyjm70j22v" path="res://Scenes/MainMenu/main_menu.gd" id="1_uqdog"]
-[ext_resource type="Texture2D" uid="uid://c7fivtrfbcjtn" path="res://Sprites/background_img.jpg" id="2_qgdf6"]
-[ext_resource type="FontFile" uid="uid://wmy5j44afhme" path="res://Sprites/CyberpunkCraftpixPixel.otf" id="3_0qgbs"]
+[ext_resource type="FontFile" uid="uid://nuf75l6fkxjc" path="res://Sprites/PressStart2P.ttf" id="2_v763k"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_adu2g"]
-font = ExtResource("3_0qgbs")
-font_size = 128
-outline_size = 8
-outline_color = Color(0, 0, 0, 1)
-
-[node name="MainMenu" type="Control" unique_id=431971574]
+[node name="Control" type="Control" unique_id=1505988898]
 layout_mode = 3
-anchors_preset = 0
-offset_left = 691.0
-offset_top = 54.0
-offset_right = 731.0
-offset_bottom = 94.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_uqdog")
 
-[node name="BackgroundImg" type="Sprite2D" parent="." unique_id=538805349]
-position = Vector2(-115.00002, 270)
-scale = Vector2(0.5625, 0.421875)
-texture = ExtResource("2_qgdf6")
-
-[node name="Label" type="Label" parent="." unique_id=417766736]
-layout_mode = 0
-offset_left = -659.0
-offset_top = 33.0
-offset_right = 454.0
-offset_bottom = 168.0
-text = "TCG Survivors"
-label_settings = SubResource("LabelSettings_adu2g")
-
-[node name="PlayButton" type="Button" parent="." unique_id=1798009076]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=879623121]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -2.7250001
-anchor_top = 8.075001
-anchor_right = -2.7250001
-anchor_bottom = 8.075001
-offset_left = -90.99999
-offset_top = -29.00003
-offset_right = 93.00001
-offset_bottom = 29.99997
-theme_override_fonts/font = ExtResource("3_0qgbs")
-theme_override_font_sizes/font_size = 48
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = 10.0
+offset_right = 116.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=714127947]
+layout_mode = 2
 text = "Jogar"
+
+[node name="TutorialButton" type="Button" parent="VBoxContainer" unique_id=831676096]
+layout_mode = 2
+text = "Tutorial"
+
+[node name="Label" type="Label" parent="." unique_id=748557912]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 149.0
+offset_bottom = 280.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_v763k")
+theme_override_font_sizes/font_size = 64
+text = "TCG Survivor
+"
+horizontal_alignment = 1
+vertical_alignment = 1

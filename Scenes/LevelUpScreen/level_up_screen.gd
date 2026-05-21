@@ -3,40 +3,40 @@ extends CanvasLayer
 signal option_chosen(power_up)
 
 const POWER_UPS_SHARED = [
-	{"id": "speed",        "label": "Mais Velocidade\n+20% movimento",            "max": 5,  "weight": 10},
-	{"id": "pulse",        "label": "Pulso\nOnda de dano ao redor do player",     "max": 1,  "weight": 8},
-	{"id": "pulse_size",   "label": "Pulso Maior\n+30% raio do pulso",            "max": 3,  "weight": 7},
-	{"id": "xp_pull_1",   "label": "Atração de XP I\nRaio de 100px",              "max": 1,  "weight": 8},
-	{"id": "xp_pull_2",   "label": "Atração de XP II\nRaio de 200px",             "max": 1,  "weight": 7},
-	{"id": "xp_pull_3",   "label": "Atração de XP III\nRaio de 350px",            "max": 1,  "weight": 6},
-	{"id": "regen_1",      "label": "Regen I\n+1 HP a cada 10s",                  "max": 1,  "weight": 8},
-	{"id": "regen_2",      "label": "Regen II\n+1 HP a cada 7s",                  "max": 1,  "weight": 7},
-	{"id": "regen_3",      "label": "Regen III\n+1 HP a cada 5s",                 "max": 1,  "weight": 6},
-	{"id": "lightning",    "label": "Raio\nAtinge inimigo aleatório próximo",      "max": 1,  "weight": 5},
-	{"id": "knockback",    "label": "Knockback\nEmpurra inimigos ao receber dano", "max": 1,  "weight": 6},
-	{"id": "extra_weapon", "label": "Arma Extra\nGanha uma arma aleatória",        "max": 1,  "weight": 1},
+	{"id": "speed",        "label": "Mais Velocidade\n\n+20% movimento",            "max": 5,  "weight": 10},
+	{"id": "pulse",        "label": "Pulso\n\nOnda de dano ao redor do player",     "max": 1,  "weight": 8},
+	{"id": "pulse_size",   "label": "Pulso Maior\n\n+30% raio do pulso",            "max": 3,  "weight": 7},
+	{"id": "xp_pull_1",   "label": "Atração de XP I\n\nRaio de 100px",              "max": 1,  "weight": 8},
+	{"id": "xp_pull_2",   "label": "Atração de XP II\n\nRaio de 200px",             "max": 1,  "weight": 7},
+	{"id": "xp_pull_3",   "label": "Atração de XP III\n\nRaio de 350px",            "max": 1,  "weight": 6},
+	{"id": "regen_1",      "label": "Regen I\n\n+1 HP a cada 10s",                  "max": 1,  "weight": 8},
+	{"id": "regen_2",      "label": "Regen II\n\n+1 HP a cada 7s",                  "max": 1,  "weight": 7},
+	{"id": "regen_3",      "label": "Regen III\n\n+1 HP a cada 5s",                 "max": 1,  "weight": 6},
+	{"id": "lightning",    "label": "Raio\n\nAtinge inimigo aleatório próximo",      "max": 1,  "weight": 5},
+	{"id": "knockback",    "label": "Knockback\n\nEmpurra inimigos ao receber dano", "max": 1,  "weight": 6},
+	{"id": "extra_weapon", "label": "Arma Extra\n\nGanha uma arma aleatória",        "max": 1,  "weight": 1},
 ]
 
 const POWER_UPS_SHOOTER = [
-	{"id": "fire_rate",   "label": "Disparo Rápido\n+25% velocidade de tiro",     "max": 4,  "weight": 8},
-	{"id": "bullet_size", "label": "Balas Maiores\n+75% tamanho",                 "max": 4,  "weight": 7},
-	{"id": "multi_shot",  "label": "Tiro Múltiplo\n3 projéteis em leque",         "max": 1,  "weight": 3},
+	{"id": "fire_rate",   "label": "Disparo Rápido\n\n+25% velocidade de tiro",     "max": 4,  "weight": 8},
+	{"id": "bullet_size", "label": "Balas Maiores\n\n+75% tamanho",                 "max": 4,  "weight": 7},
+	{"id": "multi_shot",  "label": "Tiro Múltiplo\n\n3 projéteis em leque",         "max": 1,  "weight": 3},
 ]
 
 const POWER_UPS_WARRIOR = [
-	{"id": "slash_size",   "label": "Corte Maior\n+20% alcance",                  "max": 3,  "weight": 8},
-	{"id": "slash_rate",   "label": "Corte Veloz\n+25% velocidade",               "max": 4,  "weight": 7},
-	{"id": "double_slash", "label": "Corte Duplo\nAtaca frente e atrás",          "max": 1,  "weight": 3},
+	{"id": "slash_size",   "label": "Corte Maior\n\n+20% alcance",                  "max": 3,  "weight": 8},
+	{"id": "slash_rate",   "label": "Corte Veloz\n\n+25% velocidade",               "max": 4,  "weight": 7},
+	{"id": "double_slash", "label": "Corte Duplo\n\nAtaca frente e atrás",          "max": 1,  "weight": 3},
 ]
 
 const POWER_UPS_AOE = [
-	{"id": "aoe_absorb_xp", "label": "Absorver XP\nÁrea absorve XP ao redor",    "max": 1,  "weight": 4},
-	{"id": "aoe_radius",    "label": "Área Maior\n+20px de raio",                 "max": 5,  "weight": 8},
-	{"id": "aoe_lifetime",  "label": "Área Duradoura\n+1.5s de duração",          "max": 4,  "weight": 7},
+	{"id": "aoe_absorb_xp", "label": "Absorver XP\n\nÁrea absorve XP ao redor",    "max": 1,  "weight": 4},
+	{"id": "aoe_radius",    "label": "Área Maior\n\n+20px de raio",                 "max": 5,  "weight": 8},
+	{"id": "aoe_lifetime",  "label": "Área Duradoura\n\n+1.5s de duração",          "max": 4,  "weight": 7},
 ]
 
 const POWER_UPS_BOOMERANG = [
-	{"id": "extra_boomerang", "label": "Mais Bumerangues\n+1 bumerangue",         "max": 3,  "weight": 6},
+	{"id": "extra_boomerang", "label": "Mais Bumerangues\n\n+1 bumerangue",         "max": 3,  "weight": 6},
 ]
 
 var picked := {}
@@ -44,9 +44,9 @@ var options := []
 var player_class := "shooter"
 
 func _ready():
-	$Opt1.pressed.connect(func(): _choose(0))
-	$Opt2.pressed.connect(func(): _choose(1))
-	$Opt3.pressed.connect(func(): _choose(2))
+	$HBoxContainer/Opt1.pressed.connect(func(): _choose(0))
+	$HBoxContainer/Opt2.pressed.connect(func(): _choose(1))
+	$HBoxContainer/Opt3.pressed.connect(func(): _choose(2))
 
 func show_options(p_class: String):
 	player_class = p_class
@@ -54,9 +54,9 @@ func show_options(p_class: String):
 	pool.shuffle()
 	options = pool.slice(0, min(3, pool.size()))
 
-	$Opt1.text = options[0]["label"] if options.size() > 0 else ""
-	$Opt2.text = options[1]["label"] if options.size() > 1 else ""
-	$Opt3.text = options[2]["label"] if options.size() > 2 else ""
+	$HBoxContainer/Opt1.text = options[0]["label"] if options.size() > 0 else ""
+	$HBoxContainer/Opt2.text = options[1]["label"] if options.size() > 1 else ""
+	$HBoxContainer/Opt3.text = options[2]["label"] if options.size() > 2 else ""
 
 	get_tree().paused = true
 	show()

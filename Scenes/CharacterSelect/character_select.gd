@@ -5,10 +5,10 @@ var aeo = load("res://Sprites/2.png")
 var boomerang = load("res://Sprites/4.png")
 
 func _ready():
-	$ShooterBtn.pressed.connect(_on_shooter_pressed)
-	$WarriorBtn.pressed.connect(_on_warrior_pressed)
-	$AOEBtn.pressed.connect(_on_aoe_pressed)
-	$BoomerangBtn.pressed.connect(_on_boomerang_pressed)
+	$HBoxContainer/VBoxContainer/ShooterBtn.pressed.connect(_on_shooter_pressed)
+	$HBoxContainer/VBoxContainer2/WarriorBtn.pressed.connect(_on_warrior_pressed)
+	$HBoxContainer/VBoxContainer/AOEBtn.pressed.connect(_on_aoe_pressed)
+	$HBoxContainer/VBoxContainer2/BoomerangBtn.pressed.connect(_on_boomerang_pressed)
 
 func _on_shooter_pressed():
 	GameData.player_class = "shooter"

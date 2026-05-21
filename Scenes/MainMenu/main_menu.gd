@@ -2,7 +2,8 @@ extends Control
 
 
 func _ready():   
-	var btn = get_node("PlayButton")
+	# Usando o caminho completo a partir do nó Control
+	var btn = $VBoxContainer/PlayButton
 	btn.pressed.connect(_on_start_pressed)
 
 func _on_start_pressed():

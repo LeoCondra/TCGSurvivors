@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://ce0bw3pvhq404"]
+
+[ext_resource type="Script" uid="uid://6q8s664j88j8" path="res://Scenes/Tutorial/tutorial.gd" id="1_8e1o1"]
+[ext_resource type="FontFile" uid="uid://nuf75l6fkxjc" path="res://Sprites/PressStart2P.ttf" id="2_m5rub"]
+
+[node name="Tutorial" type="Node2D" unique_id=77273001]
+script = ExtResource("1_8e1o1")
+
+[node name="TutorialUI" type="CanvasLayer" parent="." unique_id=1456432054]
+process_mode = 3
+
+[node name="Control" type="Control" parent="TutorialUI" unique_id=1791166699]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="TutorialUI/Control" unique_id=428124939]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 116.0
+offset_top = 63.0
+offset_right = 993.0
+offset_bottom = 421.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_m5rub")
+theme_override_font_sizes/font_size = 16
+text = "Instruções"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="TutorialUI/Control" unique_id=2023205365]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 655.0
+color = Color(0.19607843, 0.19607843, 0.19607843, 0.42352942)
+
+[node name="ContinuteBtn" type="Button" parent="TutorialUI/Control" unique_id=488505878]
+layout_mode = 0
+offset_left = 835.0
+offset_top = 524.0
+offset_right = 1091.0
+offset_bottom = 588.0
+text = "Continuar"

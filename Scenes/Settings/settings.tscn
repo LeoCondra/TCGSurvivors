@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://p2wa43xljnao"]
+
+[ext_resource type="Script" uid="uid://dguj2x5unf8iy" path="res://Scenes/Settings/settings.gd" id="1_dm7qj"]
+[ext_resource type="FontFile" uid="uid://nuf75l6fkxjc" path="res://Sprites/PressStart2P.ttf" id="1_ytwd3"]
+
+[node name="Settings" type="CanvasLayer" unique_id=1913317589]
+process_mode = 3
+script = ExtResource("1_dm7qj")
+
+[node name="Control" type="Control" parent="." unique_id=1895969559]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=127726664]
+layout_mode = 0
+offset_right = 1185.0
+offset_bottom = 675.0
+color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+
+[node name="Label" type="Label" parent="Control" unique_id=1546179349]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 177.0
+offset_top = -5.0
+offset_right = 969.0
+offset_bottom = 126.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("1_ytwd3")
+theme_override_font_sizes/font_size = 64
+text = "Configurações"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control" unique_id=1966721645]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 205.0
+offset_top = 206.0
+offset_right = 997.0
+offset_bottom = 337.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("1_ytwd3")
+theme_override_font_sizes/font_size = 64
+text = "Em breve..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackBtn" type="Button" parent="Control" unique_id=1979319827]
+layout_mode = 0
+offset_left = 943.0
+offset_top = 526.0
+offset_right = 1127.0
+offset_bottom = 623.0
+text = "Voltar"

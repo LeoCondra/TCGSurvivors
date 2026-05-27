@@ -18,7 +18,7 @@ func _process(delta):
 func _on_body_entered(body):
 	if body is Enemy:
 		body.take_damage(1, direction)
-		queue_free()
+		call_deferred("queue_free")
 
 func _draw():
 	draw_circle(Vector2.ZERO, 5.0, Color(1.0, 1.0, 0.2))

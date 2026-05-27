@@ -33,6 +33,9 @@ const LIGHTNING_VISUAL_DURATION = 0.15
 var knockback_on_hit := false
 var xp_pull_radius := 0.0
 var pulse_node: Node = null
+var pause_node: Node = null
+
+signal xp_collected
 
 var level_up_scene = preload("res://Scenes/LevelUpScreen/level_up_screen.tscn")
 var level_up_screen: Node = null
@@ -75,6 +78,10 @@ func _ready():
 	hitbox.collision_mask = 4
 	add_child(hitbox)
 
+	var pause_scene = preload("res://Scenes/Pause/pause.tscn")
+	pause_node = pause_scene.instantiate()
+	add_child(pause_node)
+
 func _load_weapon():
 	var weapon_scene
 	match GameData.player_class:
@@ -103,12 +110,15 @@ func _draw():
 		draw_line(Vector2.ZERO, lightning_target_pos, Color(0.8, 0.8, 1.0, lightning_visual_timer / LIGHTNING_VISUAL_DURATION), 2.0)
 
 func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		_toggle_pause()
+
+	if Input.is_action_just_pressed("dev_levelup"):
+		_level_up()
+
 	var move_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = move_vector.normalized() * (base_speed * speed_multiplier)
 	move_and_slide()
-	
-	if Input.is_action_just_pressed("dev_levelup"):
-		_level_up()
 
 	if invincible:
 		invincible_timer -= delta
@@ -132,10 +142,20 @@ func _process(delta):
 
 	if lightning_visual_timer > 0.0:
 		lightning_visual_timer -= delta
-		queue_redraw()
 
 	queue_redraw()
-	hud.update(hp, xp, xp_to_next_level, level, get_parent().time_elapsed if get_parent().has_method("_spawn_enemy") else 0.0)
+	var elapsed = get_parent().time_elapsed if "time_elapsed" in get_parent() else 0.0
+	hud.update(hp, xp, xp_to_next_level, level, elapsed)
+	
+func _toggle_pause():
+	if get_tree().paused and not pause_node.visible:
+		return
+	if pause_node.visible:
+		get_tree().paused = false
+		pause_node.hide()
+	else:
+		get_tree().paused = true
+		pause_node.show()
 
 func _on_hit(body):
 	if body is Enemy and not invincible:
@@ -156,6 +176,7 @@ func _level_up_from_special():
 
 func collect_xp(amount: int):
 	xp += amount
+	xp_collected.emit()
 	if xp >= xp_to_next_level:
 		_level_up()
 

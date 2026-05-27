@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Enemy
 
+signal died
+
 const XP_SCENE = preload("res://Scenes/XPOrb/xp_orb.tscn")
 
 var player: Node = null
@@ -70,6 +72,7 @@ func apply_knockback(from_position: Vector2):
 	knockback_velocity = dir * KNOCKBACK_FORCE
 
 func die():
+	died.emit()
 	var orb = XP_SCENE.instantiate()
 	orb.global_position = global_position
 	orb.xp_value = xp_value

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://d2bruwjb6jyyh"]
+
+[ext_resource type="Script" uid="uid://bk73a0j5u6noh" path="res://Scenes/Pause/pause.gd" id="1_obkup"]
+[ext_resource type="FontFile" uid="uid://nuf75l6fkxjc" path="res://Sprites/PressStart2P.ttf" id="2_y4k80"]
+
+[node name="Pause" type="CanvasLayer" unique_id=358050775]
+process_mode = 3
+script = ExtResource("1_obkup")
+
+[node name="Control" type="Control" parent="." unique_id=2008549007]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1142075303]
+layout_mode = 0
+offset_right = 1185.0
+offset_bottom = 670.0
+color = Color(0.10980392, 0.10980392, 0.10980392, 0.61960787)
+
+[node name="Label" type="Label" parent="Control" unique_id=1845588586]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 220.0
+offset_top = 58.0
+offset_right = 628.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_y4k80")
+theme_override_font_sizes/font_size = 64
+text = "PAUSADO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeBtn" type="Button" parent="Control" unique_id=1062624891]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 219.0
+offset_right = 777.0
+offset_bottom = 289.0
+text = "Continuar"
+
+[node name="SettingsBtn" type="Button" parent="Control" unique_id=848028500]
+layout_mode = 0
+offset_left = 789.0
+offset_top = 549.0
+offset_right = 1141.0
+offset_bottom = 635.0
+text = "Configurações"
+
+[node name="MenuBtn" type="Button" parent="Control" unique_id=852426372]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 378.0
+offset_right = 769.0
+offset_bottom = 458.0
+text = "Voltar ao Menu"

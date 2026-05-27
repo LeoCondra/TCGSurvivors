@@ -36,7 +36,7 @@ text = "Atirador"
 
 [node name="AOEBtn" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=2092731436]
 layout_mode = 2
-text = "AEO"
+text = "AOE"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1667422348]
 layout_mode = 2

@@ -31,9 +31,13 @@ theme_override_constants/separation = 16
 layout_mode = 2
 text = "Jogar"
 
-[node name="TutorialButton" type="Button" parent="VBoxContainer" unique_id=831676096]
+[node name="TutorialBtn" type="Button" parent="VBoxContainer" unique_id=831676096]
 layout_mode = 2
 text = "Tutorial"
+
+[node name="SettingsBtn" type="Button" parent="VBoxContainer" unique_id=1162896141]
+layout_mode = 2
+text = "Configurações"
 
 [node name="Label" type="Label" parent="." unique_id=748557912]
 layout_mode = 1
@@ -45,7 +49,7 @@ grow_horizontal = 2
 theme_override_constants/outline_size = 14
 theme_override_fonts/font = ExtResource("2_v763k")
 theme_override_font_sizes/font_size = 64
-text = "TCG Survivor
+text = "TCG Survivors
 "
 horizontal_alignment = 1
 vertical_alignment = 1

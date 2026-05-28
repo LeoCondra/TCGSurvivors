@@ -72,6 +72,9 @@ func apply_knockback(from_position: Vector2):
 	knockback_velocity = dir * KNOCKBACK_FORCE
 
 func die():
+	call_deferred("_deferred_die")
+
+func _deferred_die():
 	died.emit()
 	var orb = XP_SCENE.instantiate()
 	orb.global_position = global_position
@@ -80,7 +83,7 @@ func die():
 	if not players.is_empty():
 		orb.pull_radius = players[0].xp_pull_radius
 	get_parent().add_child(orb)
-	call_deferred("queue_free")
+	queue_free()
 
 func _draw():
 	draw_circle(Vector2.ZERO, radius, color)

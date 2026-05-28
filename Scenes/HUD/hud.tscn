@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://o3had8m7fju2"]
 
 [ext_resource type="Script" uid="uid://12j6uacausc0" path="res://Scenes/HUD/hud.gd" id="1_33i1w"]
+[ext_resource type="FontFile" uid="uid://nuf75l6fkxjc" path="res://Sprites/PressStart2P.ttf" id="2_5aai8"]
 
 [node name="HUD" type="CanvasLayer" unique_id=695560170]
 process_mode = 3
@@ -34,3 +35,34 @@ layout_mode = 0
 offset_top = 56.0
 offset_right = 40.0
 offset_bottom = 79.0
+
+[node name="BossContainer" type="VBoxContainer" parent="Control" unique_id=2141532480]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 123.0
+offset_top = 41.0
+offset_right = 1056.0
+offset_bottom = 134.0
+grow_horizontal = 2
+
+[node name="BossName" type="Label" parent="Control/BossContainer" unique_id=648120214]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_5aai8")
+theme_override_font_sizes/font_size = 40
+text = " Discord MOD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BossBarBG" type="ColorRect" parent="Control/BossContainer" unique_id=723777652]
+custom_minimum_size = Vector2(400, 20)
+layout_mode = 2
+color = Color(0.06469653, 0.06469653, 0.06469653, 1)
+
+[node name="BossBarFill" type="ColorRect" parent="Control/BossContainer/BossBarBG" unique_id=1450755990]
+layout_mode = 0
+offset_right = 933.0
+offset_bottom = 20.0
+color = Color(0.560195, 0, 0.13435543, 1)

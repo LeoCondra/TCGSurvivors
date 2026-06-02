@@ -1,4 +1,5 @@
 extends Node2D
+const EnemyScript = preload("res://Scenes/Enemy/enemy.gd")
 
 const ENEMY_SCENE = preload("res://Scenes/Enemy/EnemyTypes/enemy_normal.tscn")
 const SPAWN_DISTANCE = 400.0

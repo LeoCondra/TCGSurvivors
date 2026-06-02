@@ -5,7 +5,7 @@ class_name Enemy
 signal died
 
 const XP_SCENE = preload("res://Scenes/XPOrb/xp_orb.tscn")
-
+var contact_damage := 1
 var player: Node = null
 var base_hp := 2
 var hp := 2

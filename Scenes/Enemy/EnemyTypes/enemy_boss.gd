@@ -1,6 +1,6 @@
 extends Enemy
 
-class_name BossMOD
+#class_name BossMOD
 
 signal hp_changed(current_hp)
 
@@ -14,6 +14,7 @@ var state_timer := 0.0
 var jump_direction := Vector2.ZERO
 
 func _ready():
+	contact_damage = 2
 	base_hp = 100
 	xp_value = 50
 	speed = 65.0

@@ -171,9 +171,7 @@ func _toggle_pause():
 
 func _on_hit(body):
 	if body is Enemy and not invincible:
-		var damage = 2 if body is BossMOD else 1
-		hp -= damage
-		update_health_bar()
+		hp -= body.contact_damage
 		invincible = true
 		invincible_timer = INVINCIBLE_DURATION
 		if knockback_on_hit:

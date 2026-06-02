@@ -7,6 +7,7 @@ var speed_multiplier := 1.0
 
 var hp := 5
 var max_hp := 5
+@onready var health_fill = $Healthbar/Fill
 var invincible := false
 var invincible_timer := 0.0
 const INVINCIBLE_DURATION = 1.0
@@ -44,6 +45,7 @@ var hud_scene = preload("res://Scenes/HUD/hud.tscn")
 var hud: Node = null
 
 func _ready():
+	$AnimatedSprite2D.play("Idle")
 	add_to_group("players")
 
 	var shape = CircleShape2D.new()
@@ -52,8 +54,8 @@ func _ready():
 	col.shape = shape
 	add_child(col)
 
+	update_health_bar()
 	_load_weapon()
-
 	pulse_node = Node2D.new()
 	pulse_node.set_script(load("res://Scenes/Player/pulse.gd"))
 	pulse_node.player = self
@@ -82,6 +84,10 @@ func _ready():
 	pause_node = pause_scene.instantiate()
 	add_child(pause_node)
 
+func update_health_bar():
+	var hp_ratio = float(hp) / float(max_hp)
+	health_fill.scale.x = hp_ratio
+
 func _load_weapon():
 	var weapon_scene
 	match GameData.player_class:
@@ -98,14 +104,7 @@ func _load_weapon():
 	add_child(weapon)
 
 func _draw():
-	draw_circle(Vector2.ZERO, 20.0, Color(0.3, 0.6, 1.0))
-	var bar_width := 40.0
-	var bar_height := 5.0
-	var bar_x := -bar_width / 2
-	var bar_y := 28.0
-	draw_rect(Rect2(bar_x, bar_y, bar_width, bar_height), Color(0.6, 0.1, 0.1))
-	var hp_ratio := float(hp) / float(max_hp)
-	draw_rect(Rect2(bar_x, bar_y, bar_width * hp_ratio, bar_height), Color(0.2, 0.9, 0.2))
+	draw_circle(Vector2.ZERO, 20.0, Color(0.302, 0.6, 1.0, 0.0))
 	if lightning_visual_timer > 0.0:
 		draw_line(Vector2.ZERO, lightning_target_pos, Color(0.8, 0.8, 1.0, lightning_visual_timer / LIGHTNING_VISUAL_DURATION), 2.0)
 
@@ -119,7 +118,9 @@ func _process(delta):
 	var move_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = move_vector.normalized() * (base_speed * speed_multiplier)
 	move_and_slide()
-
+	
+	_update_animation(move_vector)
+	
 	if invincible:
 		invincible_timer -= delta
 		var flash = sin(invincible_timer * 30.0) > 0.0
@@ -133,6 +134,7 @@ func _process(delta):
 		if regen_timer <= 0.0:
 			regen_timer = REGEN_INTERVALS[regen_level - 1]
 			hp = min(hp + 1, max_hp)
+			update_health_bar()
 
 	if lightning_active:
 		lightning_timer -= delta
@@ -147,6 +149,13 @@ func _process(delta):
 	var elapsed = get_parent().time_elapsed if "time_elapsed" in get_parent() else 0.0
 	hud.update(hp, xp, xp_to_next_level, level, elapsed)
 	
+	
+func _update_animation(move_vector: Vector2):
+	if move_vector == Vector2.ZERO:
+		$AnimatedSprite2D.play("Idle")
+	else:
+		$AnimatedSprite2D.play("Walk")
+
 func _toggle_pause():
 	if get_tree().paused and not pause_node.visible:
 		return
@@ -161,6 +170,7 @@ func _on_hit(body):
 	if body is Enemy and not invincible:
 		var damage = 2 if body is BossMOD else 1
 		hp -= damage
+		update_health_bar()
 		invincible = true
 		invincible_timer = INVINCIBLE_DURATION
 		if knockback_on_hit:

@@ -7,6 +7,7 @@ signal died
 const XP_SCENE = preload("res://Scenes/XPOrb/xp_orb.tscn")
 
 var player: Node = null
+var base_hp := 2
 var hp := 2
 var xp_value := 1
 var speed := 60.0
@@ -21,29 +22,26 @@ const KNOCKBACK_FORCE = 300.0
 const KNOCKBACK_DECAY = 800.0
 
 func _ready():
+	hp = base_hp
 	add_to_group("enemies")
 	collision_layer = 4
 	collision_mask = 1
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	wall_min_slide_angle = 0.0
-
 	var shape = CircleShape2D.new()
 	shape.radius = radius
 	var col = CollisionShape2D.new()
 	col.shape = shape
 	add_child(col)
-
 	queue_redraw()
 
 func _process(delta):
 	if player == null:
 		return
-
 	if flash_timer > 0.0:
 		flash_timer -= delta
 		if flash_timer <= 0.0:
 			modulate = Color(1, 1, 1, 1)
-
 	_behavior(delta)
 
 func _behavior(delta):

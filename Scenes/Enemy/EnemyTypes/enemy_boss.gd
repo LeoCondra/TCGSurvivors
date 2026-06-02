@@ -14,7 +14,7 @@ var state_timer := 0.0
 var jump_direction := Vector2.ZERO
 
 func _ready():
-	hp = 100
+	base_hp = 100
 	xp_value = 50
 	speed = 65.0
 	color = Color(0.8, 0.0, 0.0)

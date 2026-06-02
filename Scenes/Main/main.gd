@@ -9,6 +9,9 @@ const ENEMY_SPECIAL = preload("res://Scenes/Enemy/EnemyTypes/enemy_special.tscn"
 const ENEMY_BOSS    = preload("res://Scenes/Enemy/EnemyTypes/enemy_boss.tscn")
 
 const SPAWN_DISTANCE = 600
+const MAP_MIN = Vector2(-1056, -1056)
+const MAP_MAX = Vector2(1056, 1056)
+const MAP_MARGIN = 100.0
 
 var player: Node = null
 var spawn_timer := 0.0
@@ -29,7 +32,6 @@ func _process(delta):
 	time_elapsed += delta
 	special_timer += delta
 
-	# boss após 10 minutos
 	if not boss_spawned and time_elapsed >= 600.0:
 		boss_spawned = true
 		_spawn_boss()
@@ -70,15 +72,58 @@ func _roll_substitute():
 			return c["scene"]
 	return null
 
+func _get_enemy_hp(base_hp: int, thresholds: Array) -> int:
+	for t in thresholds:
+		if time_elapsed >= t["time"]:
+			return t["hp"]
+	return base_hp
+
 func _spawn_enemy(scene):
 	if player == null:
 		return
-	var angle = randf() * TAU
-	var offset = Vector2(cos(angle), sin(angle)) * SPAWN_DISTANCE
+
 	var enemy = scene.instantiate()
-	enemy.global_position = player.global_position + offset
 	enemy.player = player
-	add_child(enemy)
+
+	var pos = Vector2.ZERO
+	var attempts = 0
+	while attempts < 20:
+		var angle = randf() * TAU
+		var offset = Vector2(cos(angle), sin(angle)) * SPAWN_DISTANCE
+		var candidate = player.global_position + offset
+		if candidate.x >= MAP_MIN.x + MAP_MARGIN and candidate.x <= MAP_MAX.x - MAP_MARGIN and \
+		   candidate.y >= MAP_MIN.y + MAP_MARGIN and candidate.y <= MAP_MAX.y - MAP_MARGIN:
+			pos = candidate
+			break
+		attempts += 1
+
+	if attempts >= 20:
+		pos = Vector2.ZERO
+
+	enemy.global_position = pos
+	add_child(enemy)  # _ready() roda aqui
+
+	# define hp DEPOIS do add_child, sobrescrevendo o valor do _ready()
+	if scene == ENEMY_NORMAL:
+		enemy.hp = _get_enemy_hp(2, [
+			{"time": 300.0, "hp": 4},
+			{"time": 120.0, "hp": 3},
+		])
+		
+	elif scene == ENEMY_BRUTE:
+		enemy.hp = _get_enemy_hp(5, [
+			{"time": 300.0, "hp": 10},
+			{"time": 120.0, "hp": 7},
+		])
+	elif scene == ENEMY_JUMPER:
+		enemy.hp = _get_enemy_hp(2, [
+			{"time": 300.0, "hp": 4},
+			{"time": 120.0, "hp": 3},
+		])
+	elif scene == ENEMY_RUNNER:
+		enemy.hp = _get_enemy_hp(1, [
+			{"time": 120.0, "hp": 2},
+		])
 
 func _spawn_boss():
 	if player == null:

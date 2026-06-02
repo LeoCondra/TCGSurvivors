@@ -111,10 +111,13 @@ func _draw():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		_toggle_pause()
-
+#Comando de dev, f1 para dar lvl up 
 	if Input.is_action_just_pressed("dev_levelup"):
 		_level_up()
-
+#comando de dev2, f2 para ir 50 segundos pra frente para testar spawns e essas coisa
+	if Input.is_action_just_pressed("dev_time"):
+		get_parent().time_elapsed += 50.0
+		
 	var move_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = move_vector.normalized() * (base_speed * speed_multiplier)
 	move_and_slide()

@@ -25,7 +25,7 @@ const POWER_UPS_SHOOTER = [
 
 const POWER_UPS_WARRIOR = [
 	{"id": "slash_size",   "label": "- Diálogo -\n\n+20% alcance",                  "max": 3,  "weight": 8},
-	{"id": "slash_rate",   "label": "Button Mashing -\n\n+25% velocidade",               "max": 4,  "weight": 7},
+	{"id": "slash_rate",   "label": "- Button Mashing -\n\n+25% velocidade",               "max": 4,  "weight": 7},
 	{"id": "double_slash", "label": "- Tudo que vai ... volta -\n\nAtaca frente e atrás",          "max": 1,  "weight": 3},
 ]
 

@@ -7,12 +7,14 @@
 radius = 5.0
 
 [node name="Bullet" type="Area2D" unique_id=1106511201]
+z_index = 2
 script = ExtResource("1_v7oki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=637415120]
 shape = SubResource("CircleShape2D_v8qja")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1070636215]
+physics_interpolation_mode = 1
 position = Vector2(3.8146973e-06, 3.8146973e-06)
 scale = Vector2(0.38617885, 0.38617885)
 texture = ExtResource("2_lv0gj")

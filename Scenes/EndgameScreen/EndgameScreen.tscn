@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://ckjr6vr1beths"]
 
+[ext_resource type="Script" uid="uid://h8lxneswaiqo" path="res://Scenes/EndgameScreen/endgame_screen.gd" id="1_5nwvh"]
+[ext_resource type="FontFile" uid="uid://nuf75l6fkxjc" path="res://Sprites/PressStart2P.ttf" id="2_2sjcu"]
+[ext_resource type="Texture2D" uid="uid://crjqy2bmekbke" path="res://Sprites/Background-Deathscreen.jpg" id="2_3kh4i"]
+
 [node name="EndgameScreen" type="Control" unique_id=200105305]
 layout_mode = 3
 anchors_preset = 15
@@ -7,15 +11,76 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5nwvh")
 
-[node name="VFlowContainer" type="VFlowContainer" parent="." unique_id=2019803847]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1745831978]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1112.0
-offset_bottom = -608.0
+offset_top = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_3kh4i")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=1629735662]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.9990001
+anchor_bottom = 0.21900001
+offset_top = 13.0
+offset_right = 0.15185547
+offset_bottom = 54.087997
+theme_override_colors/font_color = Color(0.83137256, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_2sjcu")
+theme_override_font_sizes/font_size = 46
+text = "Você Morreu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2042628654]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.9990001
+anchor_bottom = 1.0
+offset_top = 262.0
+offset_right = 0.15185547
+alignment = 1
+
+[node name="VFlowContainer" type="VFlowContainer" parent="HBoxContainer" unique_id=2019803847]
+layout_mode = 2
 alignment = 1
 last_wrap_alignment = 2
+
+[node name="MainMenuButton" type="Button" parent="HBoxContainer/VFlowContainer" unique_id=784877577]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "Menu Principal"
+
+[node name="CharacterChoiceButton" type="Button" parent="HBoxContainer/VFlowContainer" unique_id=394998318]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "Escolher Personagem"
+
+[node name="Label2" type="Label" parent="." unique_id=764047347]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.9990001
+anchor_bottom = 0.21900001
+offset_left = 1.0
+offset_top = 187.0
+offset_right = 1.1518555
+offset_bottom = 228.088
+theme_override_colors/font_color = Color(0.83137256, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_2sjcu")
+theme_override_font_sizes/font_size = 20
+text = "Boa sorte na próxima vez!"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -184,7 +184,7 @@ func _die():
 	call_deferred("_deferred_die")
 
 func _deferred_die():
-	get_tree().change_scene_to_file("res://Scenes/MainMenu/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/EndgameScreen/EndgameScreen.tscn")
 
 func _level_up_from_special():
 	level_up_screen.show_options(GameData.player_class)

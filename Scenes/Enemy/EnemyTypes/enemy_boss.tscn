@@ -108,4 +108,4 @@ script = ExtResource("1_g26an")
 position = Vector2(-3, -46)
 scale = Vector2(2.2569253, 1.9414413)
 sprite_frames = SubResource("SpriteFrames_5d2a8")
-animation = &"Jump"
+animation = &"Walk"

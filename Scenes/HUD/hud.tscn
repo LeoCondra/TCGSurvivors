@@ -13,29 +13,26 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="LabelHP" type="Label" parent="Control" unique_id=376737214]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1903787442]
 layout_mode = 0
+offset_top = 11.0
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 67.0
+
+[node name="LabelXP" type="Label" parent="Control/VBoxContainer" unique_id=1861998543]
+layout_mode = 2
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("2_5aai8")
 
-[node name="LabelXP" type="Label" parent="Control" unique_id=1861998543]
-layout_mode = 0
-offset_top = 17.0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="LabelLevel" type="Label" parent="Control/VBoxContainer" unique_id=1492026117]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_5aai8")
 
-[node name="LabelLevel" type="Label" parent="Control" unique_id=1492026117]
-layout_mode = 0
-offset_top = 36.0
-offset_right = 40.0
-offset_bottom = 59.0
-
-[node name="LabelTime" type="Label" parent="Control" unique_id=2111333215]
-layout_mode = 0
-offset_top = 56.0
-offset_right = 40.0
-offset_bottom = 79.0
+[node name="LabelTime" type="Label" parent="Control/VBoxContainer" unique_id=2111333215]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_5aai8")
 
 [node name="BossContainer" type="VBoxContainer" parent="Control" unique_id=2141532480]
 layout_mode = 1

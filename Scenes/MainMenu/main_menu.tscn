@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cswrf6jbaw2c4"]
 
 [ext_resource type="Script" uid="uid://kqdyjm70j22v" path="res://Scenes/MainMenu/main_menu.gd" id="1_uqdog"]
+[ext_resource type="Texture2D" uid="uid://pggq3s8k860x" path="res://Sprites/Background-MainMenu.jpg" id="2_qgdf6"]
 [ext_resource type="FontFile" uid="uid://nuf75l6fkxjc" path="res://Sprites/PressStart2P.ttf" id="2_v763k"]
 
 [node name="Control" type="Control" unique_id=1505988898]
@@ -11,6 +12,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uqdog")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2072257836]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qgdf6")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=879623121]
 layout_mode = 1

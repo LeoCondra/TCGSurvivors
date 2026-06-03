@@ -45,4 +45,3 @@ func _on_body_entered(body):
 	if body is Enemy and body not in hit_enemies:
 		body.take_damage(1, direction)
 		hit_enemies.append(body)
-ddddd

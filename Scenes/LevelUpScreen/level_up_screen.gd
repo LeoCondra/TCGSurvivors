@@ -31,8 +31,8 @@ const POWER_UPS_WARRIOR = [
 
 const POWER_UPS_AOE = [
 	{"id": "aoe_absorb_xp", "label": "- imã de geladeira -\n\nÁrea absorve XP ao redor",    "max": 1,  "weight": 4},
-	{"id": "aoe_radius",    "label": "-And now i become death... -\n\n+20px de raio",                 "max": 5,  "weight": 8},
-	{"id": "aoe_lifetime",  "label": "- ... the deestroyer of worlds. -\n\n+1.5s de duração",          "max": 4,  "weight": 7},
+	{"id": "aoe_radius",    "label": "- And now i become death... -\n\n+20px de raio",                 "max": 5,  "weight": 8},
+	{"id": "aoe_lifetime",  "label": "- ... the destroyer of worlds. -\n\n+1.5s de duração",          "max": 4,  "weight": 7},
 ]
 
 const POWER_UPS_BOOMERANG = [

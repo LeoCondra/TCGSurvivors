@@ -7,7 +7,11 @@ var radius := 60.0
 var lifetime_timer := 0.0
 var tick_timer := 0.0
 
+@onready var sprite = $AnimatedSprite2D
+
 func _ready():
+	sprite.play("default")
+	update_visual_size()
 	var shape = CircleShape2D.new()
 	shape.radius = radius
 	var col = CollisionShape2D.new()
@@ -32,6 +36,13 @@ func _process(delta):
 
 	modulate.a = 0.4 + 0.2 * sin(lifetime_timer * 5.0)
 	queue_redraw()
+
+func update_visual_size():
+	var texture_size = sprite.sprite_frames.get_frame_texture("default", 0).get_size()
+
+	var desired_diameter = radius * 2.0
+
+	sprite.scale = Vector2.ONE * (desired_diameter / texture_size.x)
 
 func _draw():
 	draw_circle(Vector2.ZERO, radius, Color(0.8, 0.2, 1.0, 0.3))

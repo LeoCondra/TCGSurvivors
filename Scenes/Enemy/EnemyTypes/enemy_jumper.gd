@@ -9,6 +9,7 @@ var state_timer := 0.0
 var jump_direction := Vector2.ZERO
 
 func _ready():
+	$AnimatedSprite2D.play("Waiting")
 	base_hp = 2
 	xp_value = 2
 	speed = 0.0
@@ -21,12 +22,14 @@ func _behavior(delta):
 	_update_sprite_direction()
 	match state:
 		"waiting":
+			$AnimatedSprite2D.play("Waiting")
 			velocity = Vector2.ZERO
 			state_timer -= delta
 			modulate.a = 0.5 + 0.5 * sin(state_timer * 10.0)
 			if state_timer <= 0.0:
 				_start_jump()
 		"jumping":
+			$AnimatedSprite2D.play("Jump")
 			velocity = jump_direction * JUMP_SPEED
 			move_and_slide()
 			state_timer -= delta

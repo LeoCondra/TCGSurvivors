@@ -1,6 +1,75 @@
 [gd_scene format=3 uid="uid://dpcqhhonlgcqi"]
 
 [ext_resource type="Script" uid="uid://ur82sbktuaj3" path="res://Scenes/Player/Weapons/boomerang.gd" id="1_3qscm"]
+[ext_resource type="Texture2D" uid="uid://dfc5edyrrg67p" path="res://Sprites/boomerang.png" id="2_147bn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h64ki"]
+atlas = ExtResource("2_147bn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he123"]
+atlas = ExtResource("2_147bn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6nmm"]
+atlas = ExtResource("2_147bn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g445v"]
+atlas = ExtResource("2_147bn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jdt6"]
+atlas = ExtResource("2_147bn")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11v5s"]
+atlas = ExtResource("2_147bn")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okt6g"]
+atlas = ExtResource("2_147bn")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgw2c"]
+atlas = ExtResource("2_147bn")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_na0yq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h64ki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he123")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6nmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g445v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jdt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11v5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okt6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgw2c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
 
 [node name="Boomerang" type="Area2D" unique_id=793013089]
 script = ExtResource("1_3qscm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=689071889]
+sprite_frames = SubResource("SpriteFrames_na0yq")
+frame_progress = 0.0518562

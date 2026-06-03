@@ -17,6 +17,7 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_5aai8")
 
 [node name="LabelXP" type="Label" parent="Control" unique_id=1861998543]
 layout_mode = 0

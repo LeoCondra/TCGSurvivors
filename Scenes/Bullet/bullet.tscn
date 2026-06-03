@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bq581ky4nkqfd"]
 
 [ext_resource type="Script" uid="uid://yqp4qo0f8try" path="res://Scenes/Bullet/bullet.gd" id="1_v7oki"]
+[ext_resource type="Texture2D" uid="uid://bxccgcth08bau" path="res://Sprites/laser.png" id="2_lv0gj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8qja"]
 radius = 5.0
@@ -10,3 +11,8 @@ script = ExtResource("1_v7oki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=637415120]
 shape = SubResource("CircleShape2D_v8qja")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1070636215]
+position = Vector2(3.8146973e-06, 3.8146973e-06)
+scale = Vector2(0.38617885, 0.38617885)
+texture = ExtResource("2_lv0gj")

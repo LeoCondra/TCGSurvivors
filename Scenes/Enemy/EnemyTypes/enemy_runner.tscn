@@ -3,45 +3,48 @@
 [ext_resource type="Script" uid="uid://ury00gqppp23" path="res://Scenes/Enemy/EnemyTypes/enemy_runner.gd" id="1_aif0e"]
 [ext_resource type="Texture2D" uid="uid://cts84dmsnbcvl" path="res://Sprites/runner.png" id="2_5n4c8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ew4ge"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n4c8"]
 atlas = ExtResource("2_5n4c8")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_khg5f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew4ge"]
 atlas = ExtResource("2_5n4c8")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qemal"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_khg5f"]
 atlas = ExtResource("2_5n4c8")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6e0ex"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qemal"]
 atlas = ExtResource("2_5n4c8")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dk82i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6e0ex"]
 atlas = ExtResource("2_5n4c8")
 region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_76m6f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk82i"]
 atlas = ExtResource("2_5n4c8")
 region = Rect2(640, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_433gf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_76m6f"]
 atlas = ExtResource("2_5n4c8")
 region = Rect2(768, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qbcu7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_433gf"]
 atlas = ExtResource("2_5n4c8")
 region = Rect2(896, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qqd0v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbcu7"]
 atlas = ExtResource("2_5n4c8")
 region = Rect2(1024, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uq53m"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n4c8")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ew4ge")
 }, {
@@ -65,13 +68,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qbcu7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qqd0v")
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 23.0
+"speed": 24.0
 }]
 
 [node name="EnemyRunner" type="CharacterBody2D" unique_id=349176634]
@@ -82,4 +82,4 @@ position = Vector2(-1.0000038, -19.000004)
 scale = Vector2(0.640625, 0.640625)
 sprite_frames = SubResource("SpriteFrames_uq53m")
 animation = &"Walk"
-frame_progress = 0.22274654
+frame_progress = 0.081114985

@@ -105,7 +105,6 @@ func _load_weapon():
 	add_child(weapon)
 
 func _draw():
-	draw_circle(Vector2.ZERO, 20.0, Color(0.302, 0.6, 1.0, 0.0))
 	if lightning_visual_timer > 0.0:
 		draw_line(Vector2.ZERO, lightning_target_pos, Color(0.8, 0.8, 1.0, lightning_visual_timer / LIGHTNING_VISUAL_DURATION), 2.0)
 

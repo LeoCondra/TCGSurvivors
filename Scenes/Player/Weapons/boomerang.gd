@@ -11,6 +11,7 @@ var returning := false
 var hit_enemies := []
 
 func _ready():
+	$AnimatedSprite2D.play("default")
 	var shape = CircleShape2D.new()
 	shape.radius = 10.0
 	var col = CollisionShape2D.new()
@@ -44,6 +45,4 @@ func _on_body_entered(body):
 	if body is Enemy and body not in hit_enemies:
 		body.take_damage(1, direction)
 		hit_enemies.append(body)
-
-func _draw():
-	draw_circle(Vector2.ZERO, 10.0, Color(0.4, 0.9, 0.4))
+ddddd

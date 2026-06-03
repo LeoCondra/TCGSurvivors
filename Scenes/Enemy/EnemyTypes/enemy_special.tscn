@@ -1,6 +1,45 @@
 [gd_scene format=3 uid="uid://665pwtyo11ke"]
 
 [ext_resource type="Script" uid="uid://jow8k50hu20v" path="res://Scenes/Enemy/EnemyTypes/enemy_special.gd" id="1_up2lp"]
+[ext_resource type="Texture2D" uid="uid://cnj1thi7gntf7" path="res://Sprites/Inimigo especial/walk_1.png" id="2_roh7u"]
+[ext_resource type="Texture2D" uid="uid://6tqlk15y01q0" path="res://Sprites/Inimigo especial/walk_2.png" id="3_l1e54"]
+[ext_resource type="Texture2D" uid="uid://g76v1jq6640l" path="res://Sprites/Inimigo especial/walk_3.png" id="4_rfnet"]
+[ext_resource type="Texture2D" uid="uid://bn2i0h05swg18" path="res://Sprites/Inimigo especial/walk_4.png" id="5_o4uv0"]
+[ext_resource type="Texture2D" uid="uid://dl0shg5t2lmlu" path="res://Sprites/Inimigo especial/walk_5.png" id="6_fm6d7"]
+[ext_resource type="Texture2D" uid="uid://dp68brwyttklx" path="res://Sprites/Inimigo especial/walk_6.png" id="7_e26wi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4abra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_roh7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_l1e54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rfnet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o4uv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fm6d7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e26wi")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 6.0
+}]
 
 [node name="EnemySpecial" type="CharacterBody2D" unique_id=1291563446]
 script = ExtResource("1_up2lp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=200245699]
+position = Vector2(3.9999962, -8)
+scale = Vector2(3.0416675, 3.0416665)
+sprite_frames = SubResource("SpriteFrames_4abra")
+animation = &"Walk"
+frame_progress = 0.2150971

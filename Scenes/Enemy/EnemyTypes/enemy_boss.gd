@@ -1,6 +1,6 @@
 extends Enemy
 
-#class_name BossMOD
+class_name BossMOD
 
 signal hp_changed(current_hp)
 
@@ -14,7 +14,6 @@ var state_timer := 0.0
 var jump_direction := Vector2.ZERO
 
 func _ready():
-	contact_damage = 2
 	base_hp = 100
 	xp_value = 50
 	speed = 65.0
@@ -22,6 +21,8 @@ func _ready():
 	radius = 45.0
 	super._ready()
 	state_timer = WAIT_TIME
+	if has_node("AnimatedSprite2D"):
+		$AnimatedSprite2D.play("Walk")
 
 func _behavior(delta):
 	match state:
@@ -30,6 +31,9 @@ func _behavior(delta):
 				var direction = (player.global_position - global_position).normalized()
 				velocity = direction * speed
 				move_and_slide()
+				if has_node("AnimatedSprite2D"):
+					$AnimatedSprite2D.play("Walk")
+					$AnimatedSprite2D.flip_h = player.global_position.x < global_position.x
 			state_timer -= delta
 			if state_timer <= 0.0:
 				state = "warning"
@@ -45,15 +49,21 @@ func _behavior(delta):
 				if player:
 					jump_direction = (player.global_position - global_position).normalized()
 				state_timer = JUMP_DISTANCE / JUMP_SPEED
+				if has_node("AnimatedSprite2D"):
+					$AnimatedSprite2D.play("Jump")
 
 		"jumping":
 			velocity = jump_direction * JUMP_SPEED
 			move_and_slide()
 			modulate = Color(1, 1, 1, 1)
+			if has_node("AnimatedSprite2D"):
+				$AnimatedSprite2D.flip_h = jump_direction.x < 0
 			state_timer -= delta
 			if state_timer <= 0.0:
 				state = "walking"
 				state_timer = WAIT_TIME
+				if has_node("AnimatedSprite2D"):
+					$AnimatedSprite2D.play("Walk")
 
 func take_damage(amount: int, knockback_dir: Vector2 = Vector2.ZERO):
 	hp -= amount
@@ -65,14 +75,15 @@ func take_damage(amount: int, knockback_dir: Vector2 = Vector2.ZERO):
 		die()
 
 func _draw():
-	draw_circle(Vector2.ZERO, radius, color)
-	var crown_points = [
-		Vector2(-20, -radius - 5),
-		Vector2(-20, -radius - 20),
-		Vector2(-8, -radius - 10),
-		Vector2(0, -radius - 25),
-		Vector2(8, -radius - 10),
-		Vector2(20, -radius - 20),
-		Vector2(20, -radius - 5),
-	]
-	draw_polyline(crown_points, Color(1.0, 0.8, 0.0), 3.0)
+	if not has_node("AnimatedSprite2D"):
+		draw_circle(Vector2.ZERO, radius, color)
+		var crown_points = [
+			Vector2(-20, -radius - 5),
+			Vector2(-20, -radius - 20),
+			Vector2(-8, -radius - 10),
+			Vector2(0, -radius - 25),
+			Vector2(8, -radius - 10),
+			Vector2(20, -radius - 20),
+			Vector2(20, -radius - 5),
+		]
+		draw_polyline(crown_points, Color(1.0, 0.8, 0.0), 3.0)

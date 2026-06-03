@@ -23,6 +23,7 @@ var steps = [
 
 func _ready():
 	GameData.player_class = "shooter"
+	MusicManager.play_music(preload("res://Audio/TutorialMusic.mp3"))
 	var player_scene = preload("res://Scenes/Player/player.tscn")
 	player = player_scene.instantiate()
 	player.global_position = Vector2(0, 0)

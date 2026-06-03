@@ -5,6 +5,7 @@ extends Control
 func _ready() -> void:
 	$HBoxContainer/VFlowContainer/MainMenuButton.pressed.connect(_on_main_menu_pressed)
 	$HBoxContainer/VFlowContainer/CharacterChoiceButton.pressed.connect(_on_character_choice_pressed)
+	MusicManager.play_music(preload("res://Audio/DeathMusic.mp3"))
 	# Replace with function body.
 
 

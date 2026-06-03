@@ -24,6 +24,7 @@ var boss_spawned := false
 
 func _ready():
 	player = PLAYER_SCENE.instantiate()
+	MusicManager.play_music(preload("res://Audio/NormalLevel.mp3"))
 	player.global_position = Vector2(0, 0)
 	add_child(player)
 	RenderingServer.set_default_clear_color(Color(0.15, 0.15, 0.15))

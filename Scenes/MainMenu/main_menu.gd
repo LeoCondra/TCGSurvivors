@@ -7,7 +7,9 @@ func _ready():
 	$VBoxContainer/PlayButton.pressed.connect(_on_start_pressed)
 	$VBoxContainer/SettingsBtn.pressed.connect(_on_settings_pressed)
 	$VBoxContainer/TutorialBtn.pressed.connect(_on_tutorial_pressed)
-
+	
+	MusicManager.play_music(preload("res://Audio/Menus.mp3"))
+	
 	settings_node = settings_scene.instantiate()
 	add_child(settings_node)
 

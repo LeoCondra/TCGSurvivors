@@ -12,6 +12,7 @@ var slash_area: Area2D = null
 var slash_col: CollisionShape2D = null
 var double_slash := false
 var back_slash_active := false
+var back_slash_direction := Vector2.LEFT
 var player: Node = null
 
 func _ready():
@@ -43,16 +44,44 @@ func _process(delta):
 
 func _do_slash():
 	slash_active = true
-	back_slash_active = double_slash
 	slash_duration_timer = slash_duration
 	var dist = 30.0 + slash_height / 2.0
 	slash_area.global_position = player.global_position + slash_direction * dist
 	slash_area.rotation = slash_direction.angle()
 	slash_area.monitoring = true
+
+	if has_node("SlashSprite"):
+		var sprite = $SlashSprite
+		sprite.global_position = player.global_position + slash_direction * dist
+		sprite.rotation = slash_direction.angle() - deg_to_rad(90)
+		sprite.show()
+		sprite.play("Slash")
+		if not sprite.animation_finished.is_connected(_on_slash_animation_finished):
+			sprite.animation_finished.connect(_on_slash_animation_finished, CONNECT_ONE_SHOT)
+
 	if double_slash:
+		back_slash_active = true
+		back_slash_direction = -slash_direction
 		_do_back_slash()
 
+func _on_slash_animation_finished():
+	if has_node("SlashSprite"):
+		$SlashSprite.hide()
+
 func _do_back_slash():
+	back_slash_active = true
+	back_slash_direction = -slash_direction
+	var dist = 30.0 + slash_height / 2.0
+
+	if has_node("SlashSpriteBack"):
+		var sprite = $SlashSpriteBack
+		sprite.global_position = player.global_position + back_slash_direction * dist
+		sprite.rotation = back_slash_direction.angle() - deg_to_rad(90)
+		sprite.show()
+		sprite.play("Slash")
+		if not sprite.animation_finished.is_connected(_on_back_slash_animation_finished):
+			sprite.animation_finished.connect(_on_back_slash_animation_finished, CONNECT_ONE_SHOT)
+
 	var back_area = Area2D.new()
 	var col = CollisionShape2D.new()
 	var shape = RectangleShape2D.new()
@@ -61,17 +90,21 @@ func _do_back_slash():
 	back_area.add_child(col)
 	back_area.collision_layer = 0
 	back_area.collision_mask = 4
-	back_area.global_position = player.global_position + (-slash_direction) * (30.0 + slash_height / 2.0)
-	back_area.rotation = (-slash_direction).angle()
+	back_area.global_position = player.global_position + back_slash_direction * (30.0 + slash_height / 2.0)
+	back_area.rotation = back_slash_direction.angle()
 	get_tree().current_scene.add_child(back_area)
 	back_area.body_entered.connect(func(body):
 		if body is Enemy:
-			body.take_damage(1, -slash_direction)
+			body.take_damage(1, back_slash_direction)
 	)
 	await get_tree().create_timer(slash_duration).timeout
 	back_slash_active = false
 	if is_instance_valid(back_area):
 		back_area.call_deferred("queue_free")
+
+func _on_back_slash_animation_finished():
+	if has_node("SlashSpriteBack"):
+		$SlashSpriteBack.hide()
 
 func _end_slash():
 	slash_active = false
@@ -80,25 +113,6 @@ func _end_slash():
 func _on_slash_hit(body):
 	if body is Enemy:
 		body.take_damage(1, slash_direction)
-
-func _draw():
-	if not slash_active and not back_slash_active:
-		return
-	var dist = 30.0 + slash_height / 2.0
-	if slash_active:
-		draw_set_transform(slash_direction * dist, slash_direction.angle())
-		draw_rect(
-			Rect2(-slash_width / 2.0, -slash_height / 2.0, slash_width, slash_height),
-			Color(1.0, 0.8, 0.2, 0.5)
-		)
-		draw_set_transform(Vector2.ZERO, 0.0)
-	if back_slash_active:
-		draw_set_transform(-slash_direction * dist, (-slash_direction).angle())
-		draw_rect(
-			Rect2(-slash_width / 2.0, -slash_height / 2.0, slash_width, slash_height),
-			Color(1.0, 0.8, 0.2, 0.5)
-		)
-		draw_set_transform(Vector2.ZERO, 0.0)
 
 func enable_double_slash():
 	double_slash = true

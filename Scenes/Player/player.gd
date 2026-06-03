@@ -56,6 +56,7 @@ func _ready():
 
 	update_health_bar()
 	_load_weapon()
+
 	pulse_node = Node2D.new()
 	pulse_node.set_script(load("res://Scenes/Player/pulse.gd"))
 	pulse_node.player = self
@@ -111,19 +112,19 @@ func _draw():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		_toggle_pause()
-#Comando de dev, f1 para dar lvl up 
+
 	if Input.is_action_just_pressed("dev_levelup"):
 		_level_up()
-#comando de dev2, f2 para ir 50 segundos pra frente para testar spawns e essas coisa
+
 	if Input.is_action_just_pressed("dev_time"):
 		get_parent().time_elapsed += 50.0
-		
+
 	var move_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = move_vector.normalized() * (base_speed * speed_multiplier)
 	move_and_slide()
-	
+
 	_update_animation(move_vector)
-	
+
 	if invincible:
 		invincible_timer -= delta
 		var flash = sin(invincible_timer * 30.0) > 0.0
@@ -151,8 +152,7 @@ func _process(delta):
 	queue_redraw()
 	var elapsed = get_parent().time_elapsed if "time_elapsed" in get_parent() else 0.0
 	hud.update(hp, xp, xp_to_next_level, level, elapsed)
-	
-	
+
 func _update_animation(move_vector: Vector2):
 	if move_vector == Vector2.ZERO:
 		$AnimatedSprite2D.play("Idle")
@@ -174,6 +174,7 @@ func _on_hit(body):
 		hp -= body.contact_damage
 		invincible = true
 		invincible_timer = INVINCIBLE_DURATION
+		update_health_bar()
 		if knockback_on_hit:
 			body.apply_knockback(global_position)
 		queue_redraw()
@@ -181,6 +182,9 @@ func _on_hit(body):
 			_die()
 
 func _die():
+	call_deferred("_deferred_die")
+
+func _deferred_die():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu/main_menu.tscn")
 
 func _level_up_from_special():

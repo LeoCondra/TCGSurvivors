@@ -84,4 +84,5 @@ func _deferred_die():
 	queue_free()
 
 func _draw():
-	draw_circle(Vector2.ZERO, radius, color)
+	if not has_node("AnimatedSprite2D"):
+		draw_circle(Vector2.ZERO, radius, color)

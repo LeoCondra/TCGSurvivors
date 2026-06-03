@@ -1,6 +1,92 @@
 [gd_scene format=3 uid="uid://bgqsdsakiokhs"]
 
 [ext_resource type="Script" uid="uid://cbia3feieobec" path="res://Scenes/Enemy/EnemyTypes/enemy_normal.gd" id="1_atw86"]
+[ext_resource type="Texture2D" uid="uid://6ghb4gr5531" path="res://Sprites/Normal.png" id="2_ccsrk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vccbe"]
+atlas = ExtResource("2_ccsrk")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrcv8"]
+atlas = ExtResource("2_ccsrk")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8pbm"]
+atlas = ExtResource("2_ccsrk")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2oqn"]
+atlas = ExtResource("2_ccsrk")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl6qa"]
+atlas = ExtResource("2_ccsrk")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06jct"]
+atlas = ExtResource("2_ccsrk")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi27v"]
+atlas = ExtResource("2_ccsrk")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvnpq"]
+atlas = ExtResource("2_ccsrk")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chkxo"]
+atlas = ExtResource("2_ccsrk")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgnsk"]
+atlas = ExtResource("2_ccsrk")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6g0ai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vccbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrcv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8pbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2oqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl6qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06jct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi27v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvnpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chkxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgnsk")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 7.0
+}]
 
 [node name="EnemyNormal" type="CharacterBody2D" unique_id=1505927275]
 script = ExtResource("1_atw86")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1381341876]
+position = Vector2(4, -33)
+scale = Vector2(1.1289063, 1.1289063)
+sprite_frames = SubResource("SpriteFrames_6g0ai")
+animation = &"Walk"
+frame_progress = 0.028244687

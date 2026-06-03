@@ -3,40 +3,40 @@ extends CanvasLayer
 signal option_chosen(power_up)
 
 const POWER_UPS_SHARED = [
-	{"id": "speed",        "label": "Mais Velocidade\n\n+20% movimento",            "max": 5,  "weight": 10},
-	{"id": "pulse",        "label": "Pulso\n\nOnda de dano ao redor do player",     "max": 1,  "weight": 8},
-	{"id": "pulse_size",   "label": "Pulso Maior\n\n+30% raio do pulso",            "max": 3,  "weight": 7},
-	{"id": "xp_pull_1",   "label": "Atração de XP I\n\nRaio de 100px",              "max": 1,  "weight": 8},
-	{"id": "xp_pull_2",   "label": "Atração de XP II\n\nRaio de 200px",             "max": 1,  "weight": 7},
-	{"id": "xp_pull_3",   "label": "Atração de XP III\n\nRaio de 350px",            "max": 1,  "weight": 6},
-	{"id": "regen_1",      "label": "Regen I\n\n+1 HP a cada 10s",                  "max": 1,  "weight": 8},
-	{"id": "regen_2",      "label": "Regen II\n\n+1 HP a cada 7s",                  "max": 1,  "weight": 7},
-	{"id": "regen_3",      "label": "Regen III\n\n+1 HP a cada 5s",                 "max": 1,  "weight": 6},
-	{"id": "lightning",    "label": "Raio\n\nAtinge inimigo aleatório próximo",      "max": 1,  "weight": 5},
-	{"id": "knockback",    "label": "Knockback\n\nEmpurra inimigos ao receber dano", "max": 1,  "weight": 6},
-	{"id": "extra_weapon", "label": "Arma Extra\n\nGanha uma arma aleatória",        "max": 1,  "weight": 1},
+	{"id": "speed",        "label": "- Energético Monstruoso -\n\n+20% movimento",            "max": 5,  "weight": 10},
+	{"id": "pulse",        "label": "- Aura -\n\nOnda de dano ao redor do player",     "max": 1,  "weight": 8},
+	{"id": "pulse_size",   "label": "- Aura + Ego -\n\n+30% raio do pulso",            "max": 3,  "weight": 7},
+	{"id": "xp_pull_1",   "label": "- Mão Pegajosa -\n\nRaio de 100px",              "max": 1,  "weight": 8},
+	{"id": "xp_pull_2",   "label": "- Braço Extensor -\n\nRaio de 200px",             "max": 1,  "weight": 7},
+	{"id": "xp_pull_3",   "label": "- Aspirador de pó -\n\nRaio de 350px",            "max": 1,  "weight": 6},
+	{"id": "regen_1",      "label": "- Merthiolate -\n\n+1 HP a cada 10s",                  "max": 1,  "weight": 8},
+	{"id": "regen_2",      "label": "- Band-Aid - \n\n+1 HP a cada 7s",                  "max": 1,  "weight": 7},
+	{"id": "regen_3",      "label": "- Bezetacil -\n\n+1 HP a cada 5s",                 "max": 1,  "weight": 6},
+	{"id": "lightning",    "label": "- Rage Bait -\n\nAtinge inimigo aleatório próximo",      "max": 1,  "weight": 5},
+	{"id": "knockback",    "label": "- ... e te joooj -\n\nEmpurra inimigos ao receber dano", "max": 1,  "weight": 6},
+	{"id": "extra_weapon", "label": "- 1 é bom, mas 2 é top -\n\nGanha uma arma aleatória",        "max": 1,  "weight": 1},
 ]
 
 const POWER_UPS_SHOOTER = [
-	{"id": "fire_rate",   "label": "Disparo Rápido\n\n+25% velocidade de tiro",     "max": 4,  "weight": 8},
-	{"id": "bullet_size", "label": "Balas Maiores\n\n+75% tamanho",                 "max": 4,  "weight": 7},
-	{"id": "multi_shot",  "label": "Tiro Múltiplo\n\n3 projéteis em leque",         "max": 1,  "weight": 3},
+	{"id": "fire_rate",   "label": "- Pilhas de Marca -\n\n+25% velocidade de tiro",     "max": 4,  "weight": 8},
+	{"id": "bullet_size", "label": "- Pack-a-Punch -\n\n+75% tamanho",                 "max": 4,  "weight": 7},
+	{"id": "multi_shot",  "label": "- ... e 3 é #### -\n\n3 projéteis em leque",         "max": 1,  "weight": 3},
 ]
 
 const POWER_UPS_WARRIOR = [
-	{"id": "slash_size",   "label": "Corte Maior\n\n+20% alcance",                  "max": 3,  "weight": 8},
-	{"id": "slash_rate",   "label": "Corte Veloz\n\n+25% velocidade",               "max": 4,  "weight": 7},
-	{"id": "double_slash", "label": "Corte Duplo\n\nAtaca frente e atrás",          "max": 1,  "weight": 3},
+	{"id": "slash_size",   "label": "- Diálogo -\n\n+20% alcance",                  "max": 3,  "weight": 8},
+	{"id": "slash_rate",   "label": "Button Mashing -\n\n+25% velocidade",               "max": 4,  "weight": 7},
+	{"id": "double_slash", "label": "- Tudo que vai ... volta -\n\nAtaca frente e atrás",          "max": 1,  "weight": 3},
 ]
 
 const POWER_UPS_AOE = [
-	{"id": "aoe_absorb_xp", "label": "Absorver XP\n\nÁrea absorve XP ao redor",    "max": 1,  "weight": 4},
-	{"id": "aoe_radius",    "label": "Área Maior\n\n+20px de raio",                 "max": 5,  "weight": 8},
-	{"id": "aoe_lifetime",  "label": "Área Duradoura\n\n+1.5s de duração",          "max": 4,  "weight": 7},
+	{"id": "aoe_absorb_xp", "label": "- imã de geladeira -\n\nÁrea absorve XP ao redor",    "max": 1,  "weight": 4},
+	{"id": "aoe_radius",    "label": "-And now i become death... -\n\n+20px de raio",                 "max": 5,  "weight": 8},
+	{"id": "aoe_lifetime",  "label": "- ... the deestroyer of worlds. -\n\n+1.5s de duração",          "max": 4,  "weight": 7},
 ]
 
 const POWER_UPS_BOOMERANG = [
-	{"id": "extra_boomerang", "label": "Mais Bumerangues\n\n+1 bumerangue",         "max": 3,  "weight": 6},
+	{"id": "extra_boomerang", "label": "- Random ######## go!!! -\n\n+1 bumerangue",         "max": 3,  "weight": 6},
 ]
 
 var picked := {}
